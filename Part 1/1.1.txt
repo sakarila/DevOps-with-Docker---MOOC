@@ -1,0 +1,13 @@
+> docker container run -d nginx
+> docker container run -d nginx
+> docker container run -d nginx
+
+> docker container ls
+
+> docker container stop d1c64c0331dd 2348194303a3
+
+> docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS                      PORTS     NAMES
+d1c64c0331dd   nginx     "/docker-entrypoint.…"   About a minute ago   Exited (0) 18 seconds ago             confident_williamson
+2348194303a3   nginx     "/docker-entrypoint.…"   About a minute ago   Exited (0) 18 seconds ago             eloquent_rhodes
+3bd6503e6791   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute           80/tcp    reverent_kowalevski

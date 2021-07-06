@@ -1,0 +1,11 @@
+> docker container stop 3bd6503e6791
+
+> docker container rm d1c64c0331dd 2348194303a3 3bd6503e6791
+
+> docker image rm nginx
+
+> docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+> docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
