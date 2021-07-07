@@ -1,0 +1,16 @@
+Dockerfile:
+"
+FROM golang:1.16
+
+EXPOSE 8080
+
+WORKDIR /go/src/app
+COPY . .
+
+ENV PORT=8080
+
+RUN go build
+CMD ["./server"]
+"
+
+> docker run -p 8080:8080 example-backend
