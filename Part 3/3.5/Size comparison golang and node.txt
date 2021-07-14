@@ -1,0 +1,5 @@
+Size with regular golang: 1,01GB
+Size with regular node: 1,17GB
+
+Size with golang-alpine: 447MB
+Size with node-alpine: 343MB

@@ -1,0 +1,2 @@
+Image size of example-frontend: 8.97MB
+Image size of example-backend: 23.6MB

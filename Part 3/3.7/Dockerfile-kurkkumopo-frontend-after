@@ -1,0 +1,23 @@
+FROM node:12.16.2 AS stage-build
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN npm ci
+
+RUN npm run build
+
+FROM alpine:3.13.2
+
+EXPOSE 3000
+
+RUN apk add thttpd
+
+RUN adduser -D appuser
+USER appuser
+WORKDIR /home/static
+
+COPY --from=stage-build /usr/src/app/build/ .
+
+CMD ["thttpd", "-D", "-h", "0.0.0.0", "-p", "3000", "-d", "/home/static", "-u", "appuser"]

@@ -1,0 +1,25 @@
+FROM golang:1.16-alpine as build-stage
+
+WORKDIR /go/src/app
+COPY . .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o server .
+
+FROM alpine:latest
+
+EXPOSE 8080
+
+RUN adduser -S appuser
+USER appuser
+
+COPY --from=build-stage /go/src/app/server .
+
+ENV PORT=8080
+ENV REQUEST_ORIGIN=http://localhost
+ENV REDIS_HOST=redis
+ENV POSTGRES_HOST=postgres
+ENV POSTGRES_USER=example
+ENV POSTGRES_PASSWORD=example
+ENV POSTGRES_DATABASE=test
+
+CMD ["./server"]

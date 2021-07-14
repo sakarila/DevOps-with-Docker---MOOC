@@ -1,0 +1,19 @@
+FROM node:14-alpine as build-stage
+
+COPY . .
+
+RUN npm install
+RUN npm run build
+
+FROM alpine:3.13.2
+
+RUN apk add thttpd
+
+RUN adduser -D appuser
+USER appuser
+WORKDIR /home/static
+
+ENV REACT_APP_BACKEND_URL=http://localhost
+COPY --from=build-stage /build/ .
+
+CMD ["thttpd", "-D", "-h", "0.0.0.0", "-p", "5000", "-d", "/home/static", "-u", "appuser"]

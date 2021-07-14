@@ -1,0 +1,6 @@
+Original image size for "example-frontend": 497MB
+Original image size for "example-backend": 1,01GB
+
+After the changes:
+Image size for "example-frontend": 454MB
+Image size for "example-backend": 447MB
